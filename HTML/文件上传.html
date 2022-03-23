@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <img src="" alt="" id="previewImg">
+    <div id="fileInfo"></div>
+</body>
+<script>
+    let fileInput = document.getElementById("fileInput");
+    let previewImg = document.getElementById("previewImg");
+    let fileInfo = document.getElementById("fileInfo");
+
+    fileInput.addEventListener("change",function(){
+        if(!fileInput.value) retun;
+        let file = fileInput.files[0]
+        fileInfo.innerHTML = "文件:" + file.name + "<br>" +
+                             "大小:" + file.size
+    })
+</script>
+</html>

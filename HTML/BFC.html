@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC理解</title>
+    <style>
+        .box{
+          border:1px solid green;
+          width: 300px;
+          margin:10px;
+        }
+        .d-ib{ display: inline-block;}
+        .d-f{ display:flex;}
+        .clear{ clear: both;}
+        .f-l{ float:left;}
+        .box-item{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 当父级元素未设置高度时，子级元素使用了float，父级元素会出现高度塌陷 -->
+    <div class="">
+        <!-- 父级元素高度塌陷：子级元素设置float，从而脱离文档流，
+             导致父级元素内容无法撑开。
+        -->
+        <div class="box">
+            <div class="box-item f-l"></div>
+            <div class="box-item f-l clear"></div>
+        </div>
+        <!-- 解决塌陷：将父级元素设置为BFC，使得父级元素的内容不会影响外部的元素 -->
+        <div class="box d-ib">
+            <div class="box-item f-l"></div>
+            <div class="box-item f-l clear"></div>
+        </div>
+    </div>
+    <!-- margin重叠(margin塌陷) -->
+    <div class="">
+        <!-- margin重叠了 -->
+        <div class="box">
+            <div class="box-item"></div>
+            <div class="box-item"></div>
+        </div>
+        <!-- 解决重叠：将其中一个元素设置为BFC，这样的话这个元素就不会
+             受其他元素的影响
+         -->
+         <div class="box">
+             <div class="box-item d-ib"></div>
+             <div class="box-item"></div>
+         </div>
+    </div>
+    <div>
+        <!-- 两栏布局 -->
+    <div style="float: left;width: 200px;height:100px;border:1px solid green">
+        this is some text
+        this is some text
+        this is some text
+        this is some text
+        this is some text
+        this is some text
+        this is some text
+       </div>
+       <!-- 这个元素的宽度被前面的元素覆盖了,可以将其设置为BFC，让它成为一个BFC元素，不受其他元素影响 -->
+       <div class="d-ib" style="width: 300px;height:100px;border:1px solid blue">
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+           this is other text
+       </div>
+    </div>
+    <div>
+        
+    </div>
+</body>
+</html>

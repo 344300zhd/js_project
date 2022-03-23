@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        #modal{
+            position: fixed;
+            height: 200px;
+            width: 200px;
+            line-height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid #000;
+            text-align: center;
+            background: red;
+        }
+        @keyframes fade {
+            from {
+                top:0%;
+                left: 0%;
+            }
+            to{
+                top: 50%;
+                left: 50%;
+            }
+        }
+        @keyframes fade2 {
+            from {
+                top:50%;
+                left: 50%;
+            }
+            to{
+                top:-20%;
+                left: -20%;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <button id="open">OPEN</button>
+    <button id="close">CLOSE</button>
+</body>
+<script>
+    const Model = (function(){
+        let box;
+        return function(){
+            if(!box){
+                box = document.createElement("div");
+                box.innerHTML = '唯一模态框'
+                box.id = "modal"
+                box.style.display = 'none'
+                document.body.appendChild(box)
+            }
+            return box
+        }
+    })()
+    document.getElementById("open").addEventListener("click",()=>{
+        const model = Model()
+        model.style.display = 'block';
+        model.style.animation = 'fade 1s';
+    })
+    document.getElementById("close").addEventListener("click",()=>{
+        const model = Model()
+        model.style.animation = 'fade2 1s';
+        setTimeout(()=>{
+            model.style.display = 'none'
+        },800)
+    })
+</script>
+</html>
