@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文件上传</title>
+    <style>
+        #previewImg{
+            width:300px;
+            height: 300px;
+            display:block;
+        }
+    </style>
 </head>
 <body>
     <input type="file" id="fileInput">
@@ -20,6 +27,13 @@
         let file = fileInput.files[0]
         fileInfo.innerHTML = "文件:" + file.name + "<br>" +
                              "大小:" + file.size
+        // 读取文件
+        let reader = new FileReader();
+        reader.onload = function(e){
+            let data = e.target.result;
+            previewImg.src = data
+        }
+        reader.readAsDataURL(file)
     })
 </script>
 </html>
