@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取鼠标实时坐标</title>
+    <script src="../Plugins/jquery-3.6.0.min.js"></script>
+    <style>
+        #area{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <p id="location">请移动至指定区域：</p>
+    <div id="area"></div>
+</body>
+
+<script>
+    $(function(){
+        $("#area").mousemove(e =>{
+            $("#location").text(`x坐标：${e.pageX},y坐标：${e.pageY}`)
+        })
+        $("#area").mouseleave(()=>{
+            $("#location").text("请移动至指定区域: ")
+        })
+    })
+</script>
+
+</html>
