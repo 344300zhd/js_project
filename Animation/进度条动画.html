@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条动画实现</title>
+    <script src="../Plugins/jquery-3.6.0.min.js"></script>
+    <style>
+        .meter,.progress{
+            width: 200px;
+        }
+        .g-container{
+            width:200px;
+            height: 6px;
+            border-radius: 25px;
+            background:#eee;
+            margin: auto 5px;
+            outline: 1px solid rgb(189, 187, 187);
+        }
+        .g-progress{
+            width: 0%;
+            height: inherit;
+            border-radius: 25px 0 0 25px;
+            background: linear-gradient(90deg, #0f0, #0ff);
+            /* 过渡效果 */
+            transition: width 1s linear;
+        }
+        .g-container:hover .g-progress{
+            width: 70%;
+        }
+        .g-progress-one{
+            width: 200px;
+            height: 6px;
+            outline: 1px solid rgb(189, 187, 187);
+            border-radius: 25px;
+            margin: auto 5px;
+            background:linear-gradient(90deg,#0f0,#0ff var(--progress),transparent 0);
+            transition: 1s --progress;
+        }
+        .g-progress-radius{
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background:conic-gradient(#FFCDB2 0,#FFCDB2 35%,#B5838D 25%,#B5838D);
+        }
+    </style>
+</head>
+<body>
+    <!-- meter实现 -->
+    <p>
+        <span>完成进度:</span>
+        <meter min="0" max="500" value="350" class="meter">350</meter>
+    </p>
+    <!-- progress实现 -->
+    <p>
+        <span>完成进度:</span>
+        <progress max="500" value="350" class="progress">350</progress>
+    </p>
+    <!-- 双标签实现 -->
+    <div style="display: flex;">
+        <span>完成进度:</span>
+        <div class="g-container">
+            <div class="g-progress"></div>
+        </div>
+    </div>
+    <!-- 单标签实现 -->
+    <div style="display: flex;margin-top: 10px;">
+        <span>完成进度:</span>
+        <div class="g-progress-one" style="--progress:70%"></div>
+    </div>
+    <!-- 圆弧进度条 -->
+    <div style="display: flex;margin-top: 10px;">
+        <span>完成进度:</span>
+        <div class="g-progress-radius"></div>
+    </div>
+    <script>
+        $(function(){
+        
+        })
+    </script>
+</body>
+</html>
