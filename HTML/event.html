@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 10分钟后跳转至百度-->
+    <meta http-equiv="refresh" content="600;URL=http://www.baidu.com">
+    <title>event-基础知识</title>
+
+    <style>
+        .tip{
+            color: rgb(138, 135, 135);
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        #box{
+            width: 300px;
+            height: 300px;
+            background: pink;
+            padding: 20px;
+        }
+        #item-1,#item-2{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background:#fff;
+        }
+    </style>
+</head>
+<body>
+   <div class="tip">请注意：10分钟后跳转至百度</div> 
+   <button id="submit">Submit</button>
+   <div class="tip">事件触发信息：</div>
+   <ul id="infoList" class="tip"></ul>
+
+   <div id="box">
+       <div id="item-1"></div>
+       <div id="item-2"></div>
+   </div>
+
+   <script>
+      window.onload = function(){
+         const submit = document.getElementById("submit");
+         submit.onclick = function(e){
+             const infoList = document.getElementById("infoList");
+             if(infoList.childNodes.length === 1) return;
+             let liNode = document.createElement("li");
+             let liText = document.createTextNode("事件触发对象："+ e.target.id)
+             liNode.appendChild(liText)
+             infoList.appendChild(liNode);
+         } 
+
+         const box = document.getElementById("box")
+         box.onclick = function(e){
+             alert(e.target.id)
+         }
+      }
+   </script>
+</body>
+</html>

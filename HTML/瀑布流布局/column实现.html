@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>column实现</title>
+    <style>
+        html{
+            overflow-y: scroll;
+            overflow-x: hidden;
+            width: 100vw;
+        }
+        body{
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #box{
+            column-count: 10;
+            column-gap: 10px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        let box = document.getElementById("box");
+        for(let i = 0;i<100;i++){
+            let imgNode = document.createElement("img");
+            imgNode.src = "../img/bg.jpg";
+            imgNode.style.width = "100%";
+            imgNode.style['border-radius'] = '10px'
+            imgNode.style.height = Math.max(parseInt((Math.random() * 300)),100) + 'px';
+            box.appendChild(imgNode)
+        }
+    </script>
+</body>
+</html>

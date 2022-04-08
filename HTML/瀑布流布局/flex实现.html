@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex实现</title>
+    <style>
+        html{
+            overflow-y: scroll;
+            overflow-x: hidden;
+            width: 100vw;
+        }
+        body{
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #box{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        let box = document.getElementById("box");
+        for(let i = 0;i < 5;i++){
+            let divNode = document.createElement("div")
+            divNode.classList = ['item']
+            divNode.style.width = "20%"
+            divNode.style['margin-right'] = '10px'
+            for(let j = 0;j < 5;j++){
+                let imgNode = document.createElement("img");
+                imgNode.src = "../img/bg.jpg";
+                imgNode.style.width = "100%"
+                imgNode.style.height = Math.max(Math.round(Math.random() * 400),200) + 'px'
+                divNode.appendChild(imgNode)
+            }
+            box.appendChild(divNode)
+        }
+    </script>
+</body>
+</html>
